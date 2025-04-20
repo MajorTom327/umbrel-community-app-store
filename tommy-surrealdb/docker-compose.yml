@@ -1,5 +1,4 @@
 #Based on https://github.com/sPooKee/umbrel-community-app-store
-version: '3.8'
 
 services:
 

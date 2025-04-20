@@ -43,7 +43,7 @@ services:
     image: ghcr.io/latitude-dev/web:latest
     restart: always
     container_name: latitude-llm-web
-    platform: linux/amd64
+
     # env_file:
     #   - .env
     volumes:
@@ -63,7 +63,7 @@ services:
   migrations:
     image: ghcr.io/latitude-dev/migrations:latest
     container_name: latitude-llm-migrations
-    platform: linux/amd64
+
     # env_file:
     #   - .env
     volumes:
@@ -78,7 +78,7 @@ services:
     image: ghcr.io/latitude-dev/gateway:latest
     restart: always
     container_name: latitude-llm-gateway
-    platform: linux/amd64
+
     # env_file:
     #   - .env
     volumes:
@@ -94,7 +94,7 @@ services:
     image: ghcr.io/latitude-dev/workers:latest
     restart: always
     container_name: latitude-llm-workers
-    platform: linux/amd64
+
     # env_file:
     #   - .env
     volumes:
@@ -110,7 +110,7 @@ services:
     image: ghcr.io/latitude-dev/websockets:latest
     restart: always
     container_name: latitude-llm-websockets
-    platform: linux/amd64
+
     # env_file:
     #   - .env
     volumes:

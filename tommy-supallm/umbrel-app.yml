@@ -1,0 +1,23 @@
+manifestVersion: 1
+id: tommy-supallm
+name: Supallm
+category: AI
+version: 0.0.1
+tagline: Supallm allows you to use any AI model straight from your app frontend
+icon: https://github.com/surrealdb/.github/blob/main/img/icon.png?raw=true
+description: "Small SurrealDB Setup (1xTiKV)"
+developer: SurrealDB
+website: https://www.supallm.com/
+dependencies: []
+repo: https://github.com/supallm/supallm
+support: https://github.com/supallm/supallm/issues
+port: 3000
+gallery:
+path: ""
+releaseNotes: |
+  https://github.com/supallm/supallm/releases
+submitter: majortom327
+submission: null
+defaultUsername: "admin"
+defaultPassword: "supallm123"
+deterministicPassword: true
