@@ -4,8 +4,8 @@ name: Supallm
 category: AI
 version: 0.0.1
 tagline: Supallm allows you to use any AI model straight from your app frontend
-icon: https://github.com/surrealdb/.github/blob/main/img/icon.png?raw=true
-description: "Small SurrealDB Setup (1xTiKV)"
+icon: https://raw.githubusercontent.com/supallm/supallm/refs/heads/main/frontend/public/favicon.svg
+description: "Supallm allows you to use any AI model straight from your app frontend"
 developer: SurrealDB
 website: https://www.supallm.com/
 dependencies: []
