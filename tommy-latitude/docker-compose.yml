@@ -22,8 +22,8 @@ services:
     container_name: latitude-llm-db
     ports:
       - '5432:5432'
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     volumes:
       - ./docker/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
       - ./docker/pgdata:/var/lib/postgresql/data
@@ -44,8 +44,8 @@ services:
     restart: always
     container_name: latitude-llm-web
     platform: linux/amd64
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     volumes:
       - shared-storage:/app/storage/files:rw
       - shared-storage:/app/apps/web/public/files:rw
@@ -64,8 +64,8 @@ services:
     image: ghcr.io/latitude-dev/migrations:latest
     container_name: latitude-llm-migrations
     platform: linux/amd64
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     volumes:
       - shared-storage:/app/storage/files:rw
       - shared-storage:/app/apps/web/public/files:rw
@@ -79,8 +79,8 @@ services:
     restart: always
     container_name: latitude-llm-gateway
     platform: linux/amd64
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     volumes:
       - shared-storage:/app/storage/files:rw
       - shared-storage:/app/apps/web/public/files:rw
@@ -95,8 +95,8 @@ services:
     restart: always
     container_name: latitude-llm-workers
     platform: linux/amd64
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     volumes:
       - shared-storage:/app/storage/files:rw
       - shared-storage:/app/apps/web/public/files:rw
@@ -111,8 +111,8 @@ services:
     restart: always
     container_name: latitude-llm-websockets
     platform: linux/amd64
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     volumes:
       - shared-storage:/app/storage/files:rw
       - shared-storage:/app/apps/web/public/files:rw
