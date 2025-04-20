@@ -1,0 +1,131 @@
+services:
+
+  app_proxy:
+    environment:
+      # The format here is: <app-id>_<docker-service-name>_1
+      APP_HOST: tommy-latitude_app_1
+      APP_PORT: 80
+
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - 8025:8025
+      - 1025:1025
+    profiles:
+      - development
+    networks:
+      - web
+
+  db:
+    image: postgres:15.8
+    restart: always
+    container_name: latitude-llm-db
+    ports:
+      - '5432:5432'
+    env_file:
+      - .env
+    volumes:
+      - ./docker/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+      - ./docker/pgdata:/var/lib/postgresql/data
+    networks:
+      - web
+
+  redis:
+    image: redis
+    restart: always
+    container_name: latitude-llm-redis
+    ports:
+      - '6379:6379'
+    networks:
+      - web
+
+  web:
+    image: ghcr.io/latitude-dev/web:latest
+    restart: always
+    container_name: latitude-llm-web
+    platform: linux/amd64
+    env_file:
+      - .env
+    volumes:
+      - shared-storage:/app/storage/files:rw
+      - shared-storage:/app/apps/web/public/files:rw
+    environment:
+      - NEXT_SERVER_ACTIONS_ENCRYPTION_KEY=${NEXT_SERVER_ACTIONS_ENCRYPTION_KEY}
+    build:
+      args:
+        - NEXT_SERVER_ACTIONS_ENCRYPTION_KEY=${NEXT_SERVER_ACTIONS_ENCRYPTION_KEY}
+    depends_on:
+      - db
+      - redis
+    networks:
+      - web
+
+  migrations:
+    image: ghcr.io/latitude-dev/migrations:latest
+    container_name: latitude-llm-migrations
+    platform: linux/amd64
+    env_file:
+      - .env
+    volumes:
+      - shared-storage:/app/storage/files:rw
+      - shared-storage:/app/apps/web/public/files:rw
+    depends_on:
+      - db
+    networks:
+      - web
+
+  gateway:
+    image: ghcr.io/latitude-dev/gateway:latest
+    restart: always
+    container_name: latitude-llm-gateway
+    platform: linux/amd64
+    env_file:
+      - .env
+    volumes:
+      - shared-storage:/app/storage/files:rw
+      - shared-storage:/app/apps/web/public/files:rw
+    depends_on:
+      - db
+      - redis
+    networks:
+      - web
+
+  workers:
+    image: ghcr.io/latitude-dev/workers:latest
+    restart: always
+    container_name: latitude-llm-workers
+    platform: linux/amd64
+    env_file:
+      - .env
+    volumes:
+      - shared-storage:/app/storage/files:rw
+      - shared-storage:/app/apps/web/public/files:rw
+    depends_on:
+      - db
+      - redis
+    networks:
+      - web
+
+  websockets:
+    image: ghcr.io/latitude-dev/websockets:latest
+    restart: always
+    container_name: latitude-llm-websockets
+    platform: linux/amd64
+    env_file:
+      - .env
+    volumes:
+      - shared-storage:/app/storage/files:rw
+      - shared-storage:/app/apps/web/public/files:rw
+    depends_on:
+      - db
+      - redis
+    networks:
+      - web
+
+# You need to create external network for Traefik to work (docker network create web)
+networks:
+  web:
+    external: true
+
+volumes:
+  shared-storage:
