@@ -14,7 +14,6 @@ support: https://github.com/latitude-dev/latitude-llm/issues
 path: ""
 defaultPassword: ""
 port: 5030
-
 submitter: majortom327
 submission: null
 defaultUsername: "root"
