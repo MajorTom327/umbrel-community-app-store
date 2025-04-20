@@ -4,16 +4,23 @@ name: Latitude (WIP)
 category: AI
 version: 0.0.1
 tagline: Level up your stack AI
-icon: https://mintlify.s3.us-west-1.amazonaws.com/latitudellms/logo/light.svg
+icon: https://raw.githubusercontent.com/latitude-dev/latitude-llm/refs/heads/main/apps/web/public/favicon.svg
 description: "Latitude helps you implement best practices so you can deliver reliable AI products with confidence"
 developer: Latitude
 website: https://latitude.so
 dependencies: []
 repo: https://github.com/latitude-dev/latitude-llm
 support: https://github.com/latitude-dev/latitude-llm/issues
+gallery:
+  - https://framerusercontent.com/images/lLNi3FY2y8qXLjlstAbvVaENZc.png?scale-down-to=2048
+  - https://framerusercontent.com/images/M3JBYW4lFKN1Id6UNk1s969Y.png?scale-down-to=2048&lossless=1
+  - https://framerusercontent.com/images/ygoxfkjbYgW5ug1jqxR7JH4SJE.png?scale-down-to=2048
+  - https://framerusercontent.com/images/5sRknWkohvcNDOnnikcOohYLW0.png?scale-down-to=2048&lossless=1
 path: ""
 defaultPassword: ""
 port: 5030
+releaseNotes: |
+  https://github.com/latitude-dev/latitude-llm/releases
 submitter: majortom327
 submission: null
 defaultUsername: "root"
