@@ -61,3 +61,5 @@ export S3_BUCKET=
 export GOOGLE_CLIENT_ID=fake
 export GOOGLE_CLIENT_SECRET=fake
 export GOOGLE_REDIRECT_URI=${APP_URL}/api/auth/google/callback
+
+export NEXT_SERVER_ACTIONS_ENCRYPTION_KEY=
